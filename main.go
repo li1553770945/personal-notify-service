@@ -24,7 +24,7 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	etcd "github.com/kitex-contrib/registry-etcd"
 	"github.com/li1553770945/personal-notify-service/biz/infra/container"
-	"github.com/li1553770945/personal-notify-service/kitex_gen/project/projectservice"
+	"github.com/li1553770945/personal-notify-service/kitex_gen/notify/notifyservice"
 	"net"
 	"os"
 )
@@ -44,7 +44,7 @@ func main() {
 		if err != nil {
 			klog.Fatalf("server stopped with error:%s", err)
 		}
-	}(App.Provider, context.Background())
+	}(App.Trace.Provider, context.Background())
 
 	addr, err := net.ResolveTCPAddr("tcp", App.Config.ServerConfig.ListenAddress)
 	if err != nil {
@@ -55,8 +55,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	svr := projectservice.NewServer(
-		new(ProjectServiceImpl),
+	svr := notifyservice.NewServer(
+		new(NotifyServiceImpl),
 		server.WithSuite(tracing.NewServerSuite()),
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: serviceName}),
 		server.WithRegistry(r),

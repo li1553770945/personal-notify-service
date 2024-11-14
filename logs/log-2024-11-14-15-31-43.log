@@ -1,0 +1,4 @@
+{"level":"info","msg":"KITEX: server listen at addr=[::]:8892","time":"2024-11-14T15:31:43+08:00"}
+{"level":"info","msg":"start keepalive lease 694d9325d3dd4b94 for etcd registry","time":"2024-11-14T15:31:44+08:00"}
+{"level":"info","msg":"stop keep register service kitex/registry-etcd/personal-notify-service/192.168.105.1:8892","time":"2024-11-14T15:33:01+08:00"}
+{"level":"fatal","msg":"server stopped with error:failed to upload metrics: rpc error: code = Unimplemented desc = unknown service opentelemetry.proto.collector.metrics.v1.MetricsService","time":"2024-11-14T15:33:01+08:00"}
